@@ -13,6 +13,20 @@
 }
 
 
-#start,#status{
-    font-size: 22px;
+#start,#status,#restart{
+    font-size: 18px;
+}
+
+.modal-dialog{
+    width: 90%;
+}
+
+.instructions{
+    width: 45%;
+}
+
+#credits{
+    background-color: white;
+    line-height: 40px;
+    margin: 0px;
 }
