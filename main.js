@@ -21,6 +21,9 @@ var ball = {
     dy:3
 }
 
+right_hand_X = "";
+right_hand_Y = "";
+
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent("canvas");
@@ -30,10 +33,20 @@ function setup(){
   video.hide();
 
   PoseNet = ml5.poseNet(video , modelLoaded);
+  PoseNet.on("pose" , gotPoses);
 }
 
 function modelLoaded() {
   console.log("model is loaded");
+}
+
+function gotPoses(results){
+	if(results.length > 0){
+		console.log(results);
+		right_hand_X=results[0].pose.rightWrist.x;
+		right_hand_Y=results[0].pose.rightWrist.y;
+    console.log("right_hand_X = " + right_hand_X + " right_hand_Y = " + right_hand_Y)
+	}
 }
 
 function draw(){
@@ -45,6 +58,10 @@ function draw(){
  fill("black");
  stroke("black");
  rect(680,0,20,700);
+
+ fill("red");
+ stroke("red");
+circle(right_hand_X,right_hand_Y,35);
 
  fill("black");
  stroke("black");
