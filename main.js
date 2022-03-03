@@ -23,6 +23,12 @@ var ball = {
 
 right_hand_X = "";
 right_hand_Y = "";
+game_status="";
+
+function start_game(){
+  game_status="start";
+  document.getElementById("status").innerHTML="Game is Loaded";
+}
 
 function setup(){
   var canvas =  createCanvas(700,600);
